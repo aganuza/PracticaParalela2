@@ -260,7 +260,7 @@ int main(int argc, char *argv[]){
 	//printf("debug12 %d\n", world_rank);
 	if(world_rank == 0){
 	 	//printf("debug13 %d\n", world_rank);
-	 	Tomar el tiempo de ejecución
+	 	//Tomar el tiempo de ejecución
 	 	gettimeofday(&stop, NULL);
 	 	t = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec);
         printf("Tiempo de ejecución (en segundos): %.6f s\n",t); 	
