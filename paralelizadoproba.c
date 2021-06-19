@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
 	if(world_rank == 0){
 
 		FILE *f1;
-	    f1=fopen("data.txt","r");
+		f1=fopen("data.txt","r");
 	    int a;
 
 	    if(f1==NULL){
@@ -115,7 +115,8 @@ int main(int argc, char *argv[]){
 		gettimeofday(&start, NULL);
 		//printf("debug5 %d\n", world_rank);
 	}
-	//En este array re guaradaran las personas contagiadas de todos los otros procesadores, lo que se envia y recoge del allgather
+	
+	//En este array se guaradaran las personas contagiadas de todos los otros procesadores, lo que se envia y recoge del allgather
 	sumacontagiados = malloc((pobl.per_max)*sizeof(struct persona));
 	MPI_Datatype person; //Tipo MPI para el struct persona
 	//Aqui se crea el tipo person, que es el equivalente MPI del struct persona
@@ -128,6 +129,7 @@ int main(int argc, char *argv[]){
 	//printf("debug7 %d\n",((pobl.per_max)/world_size));
 	MPI_Scatter(&personas[0], ((pobl.per_max)/world_size), person, personaskter, ((pobl.per_max)/world_size), person, 0, MPI_COMM_WORLD);
 	//printf("debug8 %d\n", world_rank);
+	
 	//Parametros locales de cada procesador
 	int i,k,j,p,vacunados,vivos;
 	int cont = 0;
